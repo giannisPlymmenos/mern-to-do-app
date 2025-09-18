@@ -14,6 +14,7 @@ build/
 .env
 server/.env
 client/.env
+creds.txt
 
 # Logs
 *.log
