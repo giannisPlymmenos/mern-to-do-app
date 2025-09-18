@@ -34,7 +34,7 @@ mern-to-do-app/
 
 ### 1) Clone the repo
 ```bash
-git clone https://github.com/<your-username>/mern-to-do-app.git
+git clone https://github.com/<giannisPlymmenos>/mern-to-do-app.git
 cd mern-to-do-app
 ```
 
@@ -90,20 +90,3 @@ Frontend runs at `http://localhost:5173`.
 - `PUT /api/todos/:id` → update todo  
 - `DELETE /api/todos/:id` → delete todo  
 
----
-
-## 🔐 Notes
-- Keep your `.env` out of Git (`.gitignore` includes it).
-- Ensure the email in your Git `user.email` is verified on GitHub so commits link to your profile.
-
----
-
-## 📸 Screenshots
-Add images in a `docs/` folder and update paths:
-- `docs/screenshot-auth.png`
-- `docs/screenshot-dashboard.png`
-
----
-
-## 📜 License
-MIT License © 2025 [Your Name](https://github.com/<your-username>)
