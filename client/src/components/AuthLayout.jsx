@@ -13,7 +13,7 @@ export default function AuthLayout({ title, subtitle, children }) {
       </div>
 
       {/* Hero (hidden on small screens) */}
-      <div className="hidden md:block">
+      <div className="block">
         <AuthHero />
       </div>
     </div>

@@ -34,12 +34,6 @@ export default function Dashboard() {
           <h2 className="text-2xl font-semibold">Your Tasks</h2>
           <p className="text-sm text-slate-500">Stay on top of your day.</p>
         </div>
-        <button
-          onClick={logout}
-          className="text-sm px-3 py-2 rounded-xl border border-slate-300/70 dark:border-slate-700/70 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
-        >
-          Logout
-        </button>
       </div>
 
       <div className="mb-4">
@@ -54,6 +48,7 @@ export default function Dashboard() {
           <p className="text-sm text-slate-500">No tasks yet — add your first one! 🎯</p>
         )}
       </div>
+      
     </div>
   )
 }
