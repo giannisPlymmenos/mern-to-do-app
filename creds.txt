@@ -1,0 +1,4 @@
+giannisplymmenos_db_user
+5B77IaEK93qMHOaS
+
+mongodb+srv://giannisplymmenos_db_user:5B77IaEK93qMHOaS@cluster0.sri4d6j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
