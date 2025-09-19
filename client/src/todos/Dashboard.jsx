@@ -50,7 +50,7 @@ export default function Dashboard() {
         <TodoForm onAdd={addTodo} />
       </div>
 
-      <div className="grid gap-3">
+      <div className="grid gap-3 break-all">
         {todos.map((t) => (
           <TodoItem key={t._id} todo={t} onToggle={toggle} onRemove={remove} onEdit={editText} />
         ))}

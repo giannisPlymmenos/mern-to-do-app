@@ -1,51 +1,67 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react";
 
 export default function TodoItem({ todo, onToggle, onRemove, onEdit }) {
-  const [editing, setEditing] = useState(false)
-  const [text, setText] = useState(todo.text)
-  const inputRef = useRef(null)
+  const [editing, setEditing] = useState(false);
+  const [text, setText] = useState(todo.text);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (editing) {
-      setText(todo.text)
-      inputRef.current?.focus()
-      inputRef.current?.select()
+      setText(todo.text);
+      inputRef.current?.focus();
+      inputRef.current?.select();
     }
-  }, [editing, todo.text])
+  }, [editing, todo.text]);
 
-  const startEdit = () => setEditing(true)
-  const cancelEdit = () => { setEditing(false); setText(todo.text) }
+  const startEdit = () => setEditing(true);
+  const cancelEdit = () => {
+    setEditing(false);
+    setText(todo.text);
+  };
   const saveEdit = () => {
-    const trimmed = text.trim()
-    if (!trimmed || trimmed === todo.text) { setEditing(false); return }
-    onEdit(todo._id, trimmed)
-    setEditing(false)
-  }
+    const trimmed = text.trim();
+    if (!trimmed || trimmed === todo.text) {
+      setEditing(false);
+      return;
+    }
+    onEdit(todo._id, trimmed);
+    setEditing(false);
+  };
 
   const onKey = (e) => {
-    if (e.key === 'Enter') { e.preventDefault(); saveEdit() }
-    if (e.key === 'Escape') { e.preventDefault(); cancelEdit() }
-  }
+    if (e.key === "Enter") {
+      e.preventDefault();
+      saveEdit();
+    }
+    if (e.key === "Escape") {
+      e.preventDefault();
+      cancelEdit();
+    }
+  };
 
   return (
-    <div className="flex items-center gap-3 p-3 rounded-xl border border-slate-200/70 dark:border-slate-800/70 bg-white/60 dark:bg-slate-800/60">
+    <div className="flex items-center break-word gap-3 p-3 rounded-xl border border-slate-200/70 dark:border-slate-800/70 bg-white/60 dark:bg-slate-800/60">
       <input
         type="checkbox"
         checked={todo.completed}
-        onChange={e => onToggle(todo._id, e.target.checked)}
+        onChange={(e) => onToggle(todo._id, e.target.checked)}
         className="h-4 w-4 accent-slate-900 dark:accent-slate-100"
       />
 
       {/* Text / Editor */}
       {!editing ? (
-        <span className={`flex-1 ${todo.completed ? 'line-through text-slate-400' : ''}`}>
+        <span
+          className={`flex-1 break-words whitespace-pre-wrap ${
+            todo.completed ? "line-through text-slate-400" : ""
+          }`}
+        >
           {todo.text}
         </span>
       ) : (
         <input
           ref={inputRef}
           value={text}
-          onChange={e => setText(e.target.value)}
+          onChange={(e) => setText(e.target.value)}
           onKeyDown={onKey}
           className="flex-1 rounded-lg border border-slate-300/60 dark:border-slate-700/60 bg-white/70 dark:bg-slate-800/70 px-3 py-1.5 outline-none focus:ring-2 ring-slate-300 dark:ring-slate-600"
         />
@@ -84,5 +100,5 @@ export default function TodoItem({ todo, onToggle, onRemove, onEdit }) {
         </div>
       )}
     </div>
-  )
+  );
 }
