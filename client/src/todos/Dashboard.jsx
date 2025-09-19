@@ -22,6 +22,16 @@ export default function Dashboard() {
     const { data } = await api.put(`/todos/${id}`, { completed })
     setTodos((t) => t.map((td) => (td._id === id ? data : td)))
   }
+
+
+  const editText = async (id, text) => {
+    const newText = text.trim();
+    if (!newText) return; // you can also surface a toast or error
+    const { data } = await api.put(`/todos/${id}`, { text: newText });
+    setTodos(t => t.map(td => (td._id === id ? data : td)));
+  };
+
+
   const remove = async (id) => {
     await api.delete(`/todos/${id}`)
     setTodos((t) => t.filter((td) => td._id !== id))
@@ -42,7 +52,7 @@ export default function Dashboard() {
 
       <div className="grid gap-3">
         {todos.map((t) => (
-          <TodoItem key={t._id} todo={t} onToggle={toggle} onRemove={remove} />
+          <TodoItem key={t._id} todo={t} onToggle={toggle} onRemove={remove} onEdit={editText} />
         ))}
         {todos.length === 0 && (
           <p className="text-sm text-slate-500">No tasks yet — add your first one! 🎯</p>

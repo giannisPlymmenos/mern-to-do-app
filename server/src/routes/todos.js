@@ -21,9 +21,15 @@ router.post('/', async (req, res) => {
 
 // PUT /api/todos/:id
 router.put('/:id', async (req, res) => {
+  const update = { ...req.body };
+  if (typeof update.text === 'string') {
+    update.text = update.text.trim();
+    if (!update.text) return res.status(400).json({ error: 'Text required' });
+  }
+
   const todo = await Todo.findOneAndUpdate(
     { _id: req.params.id, user: req.userId },
-    { $set: req.body },
+    { $set: update },
     { new: true }
   );
   if (!todo) return res.status(404).json({ error: 'Not found' });

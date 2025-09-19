@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { useAuth } from './auth/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import AuthProvider from './auth/AuthContext'
@@ -39,7 +39,7 @@ function Header() {
 function Footer() {
   return (
     <footer className="mt-12 py-8 text-center text-xs text-slate-500">
-      Built with MERN + Tailwind
+      Built by <Link to="https://linkedin.com/in/giannisplymmenos" className="underline" target='_blank'>Ioannis Plymmenos</Link>
     </footer>
   )
 }
